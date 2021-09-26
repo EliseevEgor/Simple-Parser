@@ -8,11 +8,30 @@
 
 Бот выведет стандартную информацию о данной компании.
 ## Running
-Необходимо установить следующие пакеты:
-1. fastAPI
-2. uvicorn
-3. Beautiful Soup 4
-4. request
-5. python-telegram-bot
+Запустить main.py
 
-Далее просто запустить main.py
+## Testing (ветка)
+Сейчас есть два файла для тестирования 
+
+server/tests/utest_request_utils.py и 
+
+server/tests/utest_server_impl.py
+
+Чтобы запустить тесты необходимо в папке проекта выполнить:
+
+ python3 -m unittest server/tests/utest_request_utils.py
+
+ python3 -m unittest server/tests/utest_server_impl.py
+ 
+ Также PyCharm дает возможность запустить прям из IDE оба класса
+ 
+ ## Load testing
+ Решение находится в папке Docs
+ 
+ Locust тест можно запустить и самому, необходимо запустить приложение (запустить main).
+ 
+ Далее в терминале из папки проекта запустить locust -f server/tests/load_testing/locustfile.py --host=http://0.0.0.0:8000/
+ 
+ После чего перейти по ссылке и выбрать нужное количество пользователей
+ 
+ 

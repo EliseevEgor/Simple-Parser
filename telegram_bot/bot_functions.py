@@ -2,13 +2,12 @@ import json
 
 from fastapi import HTTPException
 
-from fastAPI_server.start_fast_api import get_info
 from telegram_bot.constants import (
     HELLO_MESSAGE,
     EXCEPTION_CANT_FIND,
     EXCEPTION_ALL_ELSE
 )
-from fastAPI_server.constants import (
+from server.utils.constants import (
     EXCEPTION_TooManyRedirects_TEXT,
 )
 
@@ -22,8 +21,8 @@ def start(update, context):
 
 
 def parse_info_from_yahoo(update, context):
+    from server.main.server_impl import get_info
     try:
-
         # пока что None, чуть позже сделаю нормально
         ans = get_info(update.message.text, None)
     except HTTPException as e:

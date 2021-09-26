@@ -29,7 +29,3 @@ def init_bot():
 
 def stop():
     updater.stop()
-
-
-def __init__():
-    init_bot()

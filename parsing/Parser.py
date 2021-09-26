@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 class Parser:
 
-    def __init__(self, symbol: str,  site: str, elems):
+    def __init__(self, symbol: str, site: str, elems):
         url = site + symbol
         req = requests.get(url)
         if req.url != url:

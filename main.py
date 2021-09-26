@@ -2,11 +2,23 @@ import os
 
 import uvicorn as uvicorn
 
-import telegram_bot
-import fastAPI_server.start_fast_api as fAPI
+import server.main.server_impl as fAPI
+from telegram_bot import bot_impl
+
+
+def get_dir():
+    return os.path.dirname(os.path.abspath(__file__))
+
+
+def kill_bot():
+    bot_impl.stop()
+
+
+def init_fAPI():
+    fAPI.init(get_dir())
+    uvicorn.run(fAPI.app, host='0.0.0.0', port=8000, lifespan="on")
+
 
 if __name__ == '__main__':
-    telegram_bot.__init__()
-    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-    fAPI.init_elems(ROOT_DIR)
-    uvicorn.run(fAPI.app, host='0.0.0.0', port=8000, lifespan="on")
+    bot_impl.init_bot()
+    init_fAPI()

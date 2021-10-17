@@ -5,4 +5,5 @@ telegram~=0.0.1
 fastapi~=0.68.1
 pydantic~=1.8.2
 starlette~=0.14.2
+psycopg-binary
 locust~=2.2.3

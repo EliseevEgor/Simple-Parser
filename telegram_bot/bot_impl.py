@@ -5,7 +5,7 @@ from telegram.ext import (
     Filters
 )
 from telegram_bot.constants import BOT_TOKEN
-from telegram_bot.bot_functions import parse_info_from_yahoo, start
+from telegram_bot.bot_functions import parse_info_from_yahoo, start, parse_client_command
 import logging
 
 updater = Updater(token=BOT_TOKEN, use_context=True)
@@ -16,7 +16,7 @@ def init_bot():
                         level=logging.INFO)
     dispatcher = updater.dispatcher
     """add handler for company's name"""
-    echo_handler = MessageHandler(Filters.text & (~Filters.command), parse_info_from_yahoo)
+    echo_handler = MessageHandler(Filters.text & (~Filters.command), parse_client_command)
     dispatcher.add_handler(echo_handler)
 
     """add handler for /start command"""

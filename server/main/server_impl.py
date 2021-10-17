@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+from DB.companies import database
 from server.main.request_utils import RequestsUtils
 from fastapi import FastAPI, Query
 from typing import List, Optional
@@ -25,6 +26,7 @@ def init(root_dir: str):
 @app.on_event("shutdown")
 def shutdown_event():
     request_func.kill_bot()
+    database.con.close()
     return {"msg": "success"}
 
 

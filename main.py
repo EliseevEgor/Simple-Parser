@@ -3,6 +3,7 @@ import os
 import uvicorn as uvicorn
 
 import server.main.server_impl as fAPI
+from DB.companies import database
 from telegram_bot import bot_impl
 
 
@@ -20,5 +21,6 @@ def init_fAPI():
 
 
 if __name__ == '__main__':
+    database.create_table("COMPANIES")
     bot_impl.init_bot()
     init_fAPI()
